@@ -2,14 +2,11 @@
 {
     static void Main(string[] args)
     {
-
-        Arithmetic arithmetic = new Arithmetic();
-        arithmetic.Solution();
-
+        new Arithmetic().Solution();
     }
 
 
-    public void Solution()
+    void Solution()
     {
         Dictionary<int, char> dict = GenerateRandomOperators();
 
@@ -83,7 +80,7 @@
         Console.WriteLine("\n\n");
     }
 
-    public long Compute(long num1, long num2, char op)
+    long Compute(long num1, long num2, char op)
     {
         if (op == '+')
         {
@@ -110,7 +107,7 @@
     }
 
 
-    public Dictionary<int, char> GenerateRandomOperators()
+    Dictionary<int, char> GenerateRandomOperators()
     {
         Dictionary<int, char> dict = new Dictionary<int, char>();
         dict.Add(1, '+');
