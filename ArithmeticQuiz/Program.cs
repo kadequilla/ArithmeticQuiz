@@ -9,8 +9,9 @@
     void Solution()
     {
         Dictionary<int, char> dict = GenerateRandomOperators();
+        Random random = new();
 
-        int numOfQuiz = new Random().Next(5, 15);
+        int numOfQuiz = random.Next(5, 15);
         int correctCount = 0;
         long num1;
         long num2;
@@ -41,9 +42,9 @@
 
         for (int i = 1; i <= numOfQuiz; i++)
         {
-            char op = dict[new Random().Next(1, 8)];
-            num1 = new Random().Next(range);
-            num2 = new Random().Next(range);
+            char op = dict[random.Next(1, 8)];
+            num1 = random.Next(range);
+            num2 = random.Next(range);
 
             Console.WriteLine($"Question {i}: What is {num1} {op} {num2}?");
             Console.Write("Your Answer: ");
