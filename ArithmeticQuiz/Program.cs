@@ -49,7 +49,7 @@ internal class Arithmetic
             Console.WriteLine($"Question {i}: What is {num1} {op} {num2}?");
             Console.Write("Your Answer: ");
 
-            long ans = Compute(num1, num2, op);
+            var ans = Compute(num1, num2, op);
 
             if (Console.ReadLine() == ans.ToString())
             {
