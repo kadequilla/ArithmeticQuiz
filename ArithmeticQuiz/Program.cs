@@ -1,33 +1,33 @@
-﻿class Arithmetic
+﻿namespace ArithmeticQuiz;
+
+internal class Arithmetic
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         new Arithmetic().Solution();
     }
 
 
-    void Solution()
+    private void Solution()
     {
-        Dictionary<int, char> dict = GenerateRandomOperators();
+        var dict = GenerateRandomOperators();
         Random random = new();
 
-        int numOfQuiz = random.Next(5, 15);
-        int correctCount = 0;
-        long num1;
-        long num2;
-        int range = 0;
+        var numOfQuiz = random.Next(5, 15);
+        var correctCount = 0;
+        var range = 0;
 
-        string diffculty = "";
+        var diff = "";
 
-        while (diffculty != "easy" && diffculty != "hard")
+        while (diff != "easy" && diff != "hard")
         {
             Console.Write("\nChoose difficulty(easy,hard): ");
-            diffculty = Console.ReadLine()!.ToLower();
-            if (diffculty == "easy")
+            diff = Console.ReadLine()!.ToLower();
+            if (diff == "easy")
             {
                 range = 10;
             }
-            else if (diffculty == "hard")
+            else if (diff == "hard")
             {
                 range = 1000;
             }
@@ -40,11 +40,11 @@
         Console.Clear();
         Console.WriteLine("\nArithmetic Quiz\n");
 
-        for (int i = 1; i <= numOfQuiz; i++)
+        for (var i = 1; i <= numOfQuiz; i++)
         {
-            char op = dict[random.Next(1, 8)];
-            num1 = random.Next(range);
-            num2 = random.Next(range);
+            var op = dict[random.Next(1, 8)];
+            long num1 = random.Next(range);
+            long num2 = random.Next(range);
 
             Console.WriteLine($"Question {i}: What is {num1} {op} {num2}?");
             Console.Write("Your Answer: ");
@@ -66,9 +66,9 @@
 
 
         Console.WriteLine("" +
-            "Results:\n" +
-            $"Total Correct Answers: {correctCount}\n" +
-            $"Percentage of Correct Answers: {Math.Round(((double)correctCount / (double)numOfQuiz) * 100, 2)}{"%"}\n");
+                          "Results:\n" +
+                          $"Total Correct Answers: {correctCount}\n" +
+                          $"Percentage of Correct Answers: {Math.Round(((double)correctCount / (double)numOfQuiz) * 100, 2)}%\n");
 
 
         Console.Write("Try again? yes/no: ");
@@ -81,7 +81,7 @@
         Console.WriteLine("\n\n");
     }
 
-    long Compute(long num1, long num2, char op)
+    private static long Compute(long num1, long num2, char op)
     {
         if (op == '+')
         {
@@ -108,17 +108,19 @@
     }
 
 
-    Dictionary<int, char> GenerateRandomOperators()
+    private static Dictionary<int, char> GenerateRandomOperators()
     {
-        Dictionary<int, char> dict = new Dictionary<int, char>();
-        dict.Add(1, '+');
-        dict.Add(2, '-');
-        dict.Add(3, '*');
-        dict.Add(4, '/');
-        dict.Add(5, '+');
-        dict.Add(6, '-');
-        dict.Add(7, '*');
-        dict.Add(8, '/');
+        var dict = new Dictionary<int, char>
+        {
+            { 1, '+' },
+            { 2, '-' },
+            { 3, '*' },
+            { 4, '/' },
+            { 5, '+' },
+            { 6, '-' },
+            { 7, '*' },
+            { 8, '/' }
+        };
 
         return dict;
     }
